@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天知道</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="./天气查询.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 上半部分 -->
+        <div id="head">
+
+            <div id="title">天知道</div>
+            <div id="selecte">
+                <input type="text" placeholder='请输入要查询的城市' 
+                    autofocus='autofocus' @keyup.enter='selecte' v-model='city' >
+                <button @click='selecte'>搜索</button>
+            </div>
+            <!-- 热门城市查询 -->
+            <div id="hotCity">
+                <a href="#" @click='change("北京")' >北京</a>
+                <a href="#" @click='change("上海")' >上海</a>
+                <a href="#" @click='change("广州")' >广州</a>
+                <a href="#" @click='change("深圳")' >深圳</a>
+            </div>
+            <!-- 天气展示 -->
+            <ul v-for='(item,i) in list'>
+                <li>
+                    <div class="type">{{item.type}}</div>
+                    <div class="date">{{item.fengxiang}}</div>
+                    <span>最{{item.high}}&nbsp; ~ &nbsp;</span><span>最{{item.low}}</span>
+                    <div class="date">{{item.date}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="天气查询.js"></script>
+</body>
+</html>
